@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mediaapp.data.api.VideoRepository
 import com.example.mediaapp.data.model.channel.ChannelResponse
-import com.example.mediaapp.data.model.video.Item
 import com.example.mediaapp.data.model.video.SearchResponse
 import com.example.mediaapp.util.Constants
 import kotlinx.coroutines.Dispatchers

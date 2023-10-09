@@ -1,12 +1,12 @@
-package com.example.mediaapp
+package com.example.mediaapp.data.api
 
-import com.example.mediaapp.data.api.RetrofitInstance.api
 import com.example.mediaapp.data.model.channel.ChannelResponse
 import com.example.mediaapp.data.model.video.SearchResponse
 import retrofit2.Response
+import retrofit2.http.Query
 
-class VideoRepositoryImpl : VideoRepository {
-    override suspend fun search(
+interface VideoRepository {
+    suspend fun search(
         key: String,
         part: String,
         videoCategoryId: String,
@@ -15,19 +15,14 @@ class VideoRepositoryImpl : VideoRepository {
         maxResults: Int,
         regionCode: String,
         pageToken: String,
-    ): Response<SearchResponse> {
-        return api.searchYoutube(key, part, videoCategoryId, chart, hl, maxResults, regionCode, pageToken)
-    }
+    ): Response<SearchResponse>
 
-    override suspend fun searchChannel(
+    suspend fun searchChannel(
         key: String,
         part: String,
         maxResults: Int,
         q: String,
         regionCode: String,
         type: String,
-    ): Response<ChannelResponse> {
-        return api.searchChannel(key, part, maxResults, q, regionCode, type)
-    }
+    ): Response<ChannelResponse>
 }
-

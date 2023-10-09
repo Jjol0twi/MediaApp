@@ -1,4 +1,4 @@
-package com.example.mediaapp.ui.adapter
+package com.example.mediaapp.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,10 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
 import com.example.mediaapp.databinding.SearchChannelItemBinding
-import com.example.mediaapp.databinding.SearchVideoItemBinding
-import com.example.mediaapp.model.SearchChannelEntity
-import com.example.mediaapp.model.SearchVideoEntity
-import com.example.mediaapp.model.YoutubeSearchResponse
+import com.example.mediaapp.ui.search.model.SearchChannelEntity
 
 class SearchChannelListAdapter() :
     RecyclerView.Adapter<SearchChannelListAdapter.ChannelViewHolder>() {

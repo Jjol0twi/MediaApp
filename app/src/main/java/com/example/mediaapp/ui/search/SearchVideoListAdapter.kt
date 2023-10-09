@@ -1,14 +1,11 @@
-package com.example.mediaapp.ui.adapter
+package com.example.mediaapp.ui.search
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
 import com.example.mediaapp.databinding.SearchVideoItemBinding
-import com.example.mediaapp.model.SearchVideoEntity
-import com.example.mediaapp.model.YoutubeSearchResponse
+import com.example.mediaapp.ui.search.model.SearchVideoEntity
 
 class SearchVideoListAdapter() : RecyclerView.Adapter<SearchVideoListAdapter.ViewHolder>() {
     private val dataList: ArrayList<SearchVideoEntity> = arrayListOf()

@@ -1,4 +1,4 @@
-package com.example.mediaapp.ui.adapter
+package com.example.mediaapp.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

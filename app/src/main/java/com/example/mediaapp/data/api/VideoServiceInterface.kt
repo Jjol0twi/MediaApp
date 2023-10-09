@@ -1,5 +1,6 @@
-package com.example.mediaapp.detail
+package com.example.mediaapp.data.api
 
+import com.example.mediaapp.data.model.YoutubeDetailModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.example.mediaapp.model
+package com.example.mediaapp.ui.search.model
 
 data class SearchChannelEntity(
     val channel: String,

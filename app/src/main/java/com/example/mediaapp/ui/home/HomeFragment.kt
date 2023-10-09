@@ -1,9 +1,8 @@
-package com.example.mediaapp
+package com.example.mediaapp.ui.home
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +10,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mediaapp.ui.MainActivity
+import com.example.mediaapp.R
+import com.example.mediaapp.SearchViewModel
 import com.example.mediaapp.data.model.channel.ChItem
 import com.example.mediaapp.util.CategoryId
 import com.example.mediaapp.data.model.video.Item
 import com.example.mediaapp.databinding.HomeFragmentBinding
-import com.example.mediaapp.ui.adapter.ChannelItemClick
-import com.example.mediaapp.ui.adapter.HomeCategoryRcvViewAdapter
-import com.example.mediaapp.ui.adapter.HomeChannelRcvAdapter
-import com.example.mediaapp.ui.adapter.HomeTrendingRcvAdapter
 import com.example.mediaapp.ui.adapter.ItemClick
+import com.example.mediaapp.ui.detail.DetailFragment
 
 
 class HomeFragment : Fragment() {
@@ -104,27 +103,27 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun replaceFragment(item: Item) {
+        val detail = DetailFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable("Video_data", item)
+            }
+        }
+        val transaction = parentFragmentManager.beginTransaction()
+//        transaction.replace(R.id.main_frame, detail)
+        transaction.add(R.id.main_frame, detail)
+        // layout clickable 안 했을 때 hide
+        transaction.hide(this@HomeFragment)
+//        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 
     private fun setupRecyclerView() {
         val trendingSnapHelper = LinearSnapHelper()
         trendingSnapHelper.attachToRecyclerView(binding.homeRcvTrendingList)
         homeCategoryRcvViewAdapter = HomeCategoryRcvViewAdapter(object : ItemClick {
             override fun onClick(item: Item) {
-                val detail = DetailFragment().apply {
-                    arguments = Bundle().apply {
-                        putSerializable("Video_data", item)
-                    }
-                }
-                val transaction = parentFragmentManager.beginTransaction()
-                transaction.setCustomAnimations(
-                    R.anim.anim_right,
-                    R.anim.anim_right_exit,
-                    R.anim.anim_left,
-                    R.anim.anim_left_exit
-                )
-                transaction.add(R.id.main_frame, detail)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                replaceFragment(item)
             }
         })
         binding.homeRcvCategoryList.apply {
@@ -137,21 +136,7 @@ class HomeFragment : Fragment() {
 
         homeTrendingRcvViewAdapter = HomeTrendingRcvAdapter(object : ItemClick {
             override fun onClick(item: Item) {
-                val detail = DetailFragment().apply {
-                    arguments = Bundle().apply {
-                        putSerializable("Video_data", item)
-                    }
-                }
-                val transaction = parentFragmentManager.beginTransaction()
-                transaction.setCustomAnimations(
-                    R.anim.anim_right,
-                    R.anim.anim_right_exit,
-                    R.anim.anim_left,
-                    R.anim.anim_left_exit
-                )
-                transaction.add(R.id.main_frame, detail)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                replaceFragment(item)
             }
         })
 
@@ -249,4 +234,5 @@ class HomeFragment : Fragment() {
         scrollHandler.removeCallbacksAndMessages(null)
         _binding = null
     }
+
 }

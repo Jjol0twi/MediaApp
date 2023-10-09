@@ -1,8 +1,6 @@
-package com.example.mediaapp
+package com.example.mediaapp.ui.detail
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,15 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import coil.load
+import com.example.mediaapp.ui.MainActivity
+import com.example.mediaapp.R
 import com.example.mediaapp.data.api.SearchRepositoryImpl
 import com.example.mediaapp.data.model.video.Item
-import com.example.mediaapp.data.model.video.Thumbnails
 import com.example.mediaapp.databinding.DetailFragmentBinding
-import com.example.mediaapp.model.SearchVideoEntity
 import com.example.mediaapp.util.Util
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.NumberFormat
@@ -72,7 +69,12 @@ class DetailFragment : Fragment() {
 
         // 뒤로가기 버튼 구현 및 화면 전환 시 애니메이션
         binding.detailBtnBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+//            requireActivity().supportFragmentManager.popBackStack()
+            val transaction = parentFragmentManager.beginTransaction()
+            val pvFragment = parentFragmentManager.findFragmentByTag(MainActivity.TAG_HOME_FRAGMENT)
+            transaction.remove(this@DetailFragment)
+            transaction.show(pvFragment!!)
+            transaction.commit()
         }
 
         // 좋아요 버튼 구현, sharedPreference
@@ -85,12 +87,10 @@ class DetailFragment : Fragment() {
                 binding.detailImgBookmark.setImageResource(R.drawable.detail_img_full_bookmark)
             } else {
                 binding.detailImgBookmark.setImageResource(R.drawable.detail_img_line_bookmark)
-
             }
         }
         binding.detailBtnLike.setOnClickListener {
             item?.let {
-
                 if (islike) {
                     binding.detailImgBookmark.setImageResource(R.drawable.detail_img_line_bookmark)
                     Util().deletePrefItem(requireContext(), it)

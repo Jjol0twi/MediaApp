@@ -1,4 +1,4 @@
-package com.example.mediaapp
+package com.example.mediaapp.ui.mypage
 
 import android.app.Activity
 import android.content.Context
@@ -16,7 +16,8 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.mediaapp.data.MypageContext
+import com.example.mediaapp.R
+import com.example.mediaapp.util.MypageContext
 import com.example.mediaapp.databinding.MypageDialogModifyFragmentBinding
 import java.io.File
 import java.io.FileOutputStream

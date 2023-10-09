@@ -1,4 +1,4 @@
-package com.example.mediaapp
+package com.example.mediaapp.ui.mypage
 
 import android.content.Context
 import android.net.Uri
@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.mediaapp.data.MypageContext
+import com.example.mediaapp.R
+import com.example.mediaapp.util.MypageContext
 import com.example.mediaapp.data.model.video.Item
 import com.example.mediaapp.databinding.MypageFragmentBinding
+import com.example.mediaapp.ui.detail.DetailFragment
 import java.io.File
 import com.example.mediaapp.util.Util
 
@@ -66,7 +68,7 @@ class MypageFragment : Fragment(), MypageDialogModifyFragment.OnDataModifiedList
         //★★★★★리사이클러뷰 선언
         val MyRecy = binding.mypageMyRecyclerview
         val items = Util().getPrefBookmarkItems(requireContext())
-        val adapter = MypageMyItemAdapter(requireContext(), items, object : OnItemClickListener{
+        val adapter = MypageMyItemAdapter(requireContext(), items, object : OnItemClickListener {
             override fun onItemClick(item: Item) {
                     val detail = DetailFragment().apply {
                         arguments = Bundle().apply {

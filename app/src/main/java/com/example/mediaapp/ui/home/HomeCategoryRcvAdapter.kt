@@ -1,4 +1,4 @@
-package com.example.mediaapp.ui.adapter
+package com.example.mediaapp.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.mediaapp.data.model.video.Item
 import com.example.mediaapp.databinding.HomeRcvItemCategoryBinding
+import com.example.mediaapp.ui.adapter.DifferCallback
+import com.example.mediaapp.ui.adapter.ItemClick
 
 class HomeCategoryRcvViewAdapter(private val itemClick: ItemClick) :
-    ListAdapter<Item,HomeCategoryRcvHolder>(DifferCallback.differCallback) {
+    ListAdapter<Item, HomeCategoryRcvHolder>(DifferCallback.differCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeCategoryRcvHolder {
         return HomeCategoryRcvHolder(

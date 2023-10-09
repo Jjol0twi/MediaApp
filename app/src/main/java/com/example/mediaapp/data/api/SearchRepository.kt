@@ -1,7 +1,7 @@
 package com.example.mediaapp.data.api
 
-import com.example.mediaapp.model.YoutubeChannelResponse
-import com.example.mediaapp.model.YoutubeSearchResponse
+import com.example.mediaapp.data.model.YoutubeChannelResponse
+import com.example.mediaapp.data.model.YoutubeSearchResponse
 
 interface SearchRepository {
     suspend fun getSearchImage(

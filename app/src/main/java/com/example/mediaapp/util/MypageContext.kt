@@ -1,4 +1,4 @@
-package com.example.mediaapp.data
+package com.example.mediaapp.util
 
 import android.app.Application
 import android.content.Context

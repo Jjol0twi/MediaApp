@@ -1,4 +1,4 @@
-package com.example.mediaapp.ui.adapter
+package com.example.mediaapp.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.mediaapp.data.model.channel.ChItem
 import com.example.mediaapp.databinding.HomeRcvItemChannelBinding
+import com.example.mediaapp.ui.adapter.DifferCallback
 
 class HomeChannelRcvAdapter() :
     ListAdapter<ChItem, HomeChannelRcvHolder>(DifferCallback.channelDifferCallback) {

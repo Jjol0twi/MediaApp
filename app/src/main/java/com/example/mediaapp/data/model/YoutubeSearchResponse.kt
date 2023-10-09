@@ -1,4 +1,4 @@
-package com.example.mediaapp.model
+package com.example.mediaapp.data.model
 
 
 import com.google.gson.annotations.SerializedName

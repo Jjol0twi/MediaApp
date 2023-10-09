@@ -1,29 +1,20 @@
-package com.example.mediaapp
+package com.example.mediaapp.ui.search
 
 import android.content.Context
-import android.content.res.Configuration
 import android.graphics.Rect
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.view.WindowInsets
-import android.view.WindowInsetsAnimation
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mediaapp.data.api.SearchRepositoryImpl
 import com.example.mediaapp.databinding.SearchFragmentBinding
-import com.example.mediaapp.model.SearchChannelEntity
-import com.example.mediaapp.model.SearchVideoEntity
-import com.example.mediaapp.ui.adapter.SearchChannelListAdapter
-import com.example.mediaapp.ui.adapter.SearchHistoryLIstAdapter
-import com.example.mediaapp.ui.adapter.SearchVideoListAdapter
+import com.example.mediaapp.ui.search.model.SearchChannelEntity
+import com.example.mediaapp.ui.search.model.SearchVideoEntity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
@@ -204,6 +195,10 @@ class SearchFragment : Fragment() {
                 Log.d("network", "response failed")
             }
         }
+    }
+
+    private fun coroutineNetwork(){
+
     }
 
     private fun updateSharedData(data: ArrayList<String>) {

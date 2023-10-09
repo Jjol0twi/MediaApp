@@ -1,4 +1,4 @@
-package com.example.mediaapp.data
+package com.example.mediaapp.data.model
 
 class MyDataModel (
     val myTitle: String, // 영상 제목
